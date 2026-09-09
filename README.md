@@ -1,6 +1,6 @@
-# CEIA — SLMs, Benchmark e Agentes
+# Fase 1: Nivelamento
 
-Repositório de trabalho do grupo de benchmarks, treinamento e comportamento agêntico do projeto de Small Language Models do CEIA. Na Fase 1, as duas equipes se alternam em dez apresentações para construir uma base comum e selecionar papers de fine-tuning e benchmarking para reprodução.
+Repositório da Fase 1 do projeto CEIA — SLMs, Benchmark e Agentes, dedicado ao nivelamento, à organização dos documentos produzidos e à busca de artigos. Nesta fase, as duas equipes se alternam em dez apresentações para construir uma base comum e selecionar papers de fine-tuning e benchmarking para reprodução.
 
 O plano completo da etapa está em [`nivelamento/fase-1-nivelamento-apresentacoes.md`](nivelamento/fase-1-nivelamento-apresentacoes.md). Cada equipe deve colocar o slideshow, as fontes e os demais artefatos na pasta da semana correspondente. A liderança fará posteriormente a curadoria do material que seguirá para outras fases.
 
