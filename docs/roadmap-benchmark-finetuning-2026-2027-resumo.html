@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Roadmap executivo do time de benchmark, comportamento agêntico e treinamento — setembro de 2026 a agosto de 2027.">
+  <title>Roadmap executivo 2026–2027 | Benchmark, comportamento agêntico e treinamento</title>
+  <style>
+    :root {
+      --ink: #152926;
+      --muted: #5f706d;
+      --paper: #f7f4ed;
+      --surface: #fffdf8;
+      --line: #d8ddd6;
+      --green: #155f55;
+      --green-dark: #0d453f;
+      --mint: #dceee8;
+      --gold: #d9993b;
+      --coral: #d96f53;
+      --blue: #4b7895;
+      --shadow: 0 18px 54px rgba(21, 41, 38, .09);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(217, 153, 59, .10), transparent 26rem),
+        radial-gradient(circle at 95% 18%, rgba(21, 95, 85, .10), transparent 32rem),
+        var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+
+    .masthead {
+      position: relative;
+      overflow: hidden;
+      color: #f8f5ed;
+      background: linear-gradient(130deg, #0b3a36 0%, #155f55 60%, #1e7265 100%);
+      padding: 24px 0 88px;
+    }
+    .masthead::before,
+    .masthead::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, .12);
+    }
+    .masthead::before { width: 520px; height: 520px; right: -210px; top: -260px; }
+    .masthead::after { width: 320px; height: 320px; right: 20px; top: -155px; }
+
+    .topbar {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-bottom: 72px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 750;
+      letter-spacing: .03em;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255, 255, 255, .45);
+      border-radius: 11px;
+      background: rgba(255, 255, 255, .08);
+      font-size: .77rem;
+    }
+    .topnav { display: flex; flex-wrap: wrap; gap: 20px; }
+    .topnav a {
+      color: rgba(255, 255, 255, .78);
+      font-size: .82rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .topnav a:hover { color: #fff; }
+
+    .hero {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(280px, .7fr);
+      gap: 64px;
+      align-items: end;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: #c8e5dc;
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--gold); }
+    h1 {
+      max-width: 830px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.65rem, 5.5vw, 5.7rem);
+      font-weight: 500;
+      letter-spacing: -.055em;
+      line-height: .98;
+    }
+    .hero-lead {
+      max-width: 760px;
+      margin: 28px 0 0;
+      color: rgba(255, 255, 255, .75);
+      font-size: clamp(1rem, 1.4vw, 1.18rem);
+    }
+    .hero-meta {
+      display: grid;
+      gap: 18px;
+      padding: 26px;
+      border: 1px solid rgba(255, 255, 255, .19);
+      border-radius: 20px;
+      background: rgba(8, 45, 42, .36);
+      backdrop-filter: blur(8px);
+    }
+    .meta-row { display: grid; grid-template-columns: 92px 1fr; gap: 12px; }
+    .meta-label {
+      color: #a7d1c8;
+      font-size: .69rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .meta-value { color: #fff; font-size: .9rem; font-weight: 650; }
+
+    main { padding: 86px 0 96px; }
+    section { scroll-margin-top: 28px; }
+    section + section { margin-top: 104px; }
+    .section-heading {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+      margin-bottom: 36px;
+    }
+    .section-no {
+      color: var(--green);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.65rem;
+      line-height: 1;
+    }
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      font-weight: 500;
+      letter-spacing: -.035em;
+      line-height: 1.08;
+    }
+    .section-intro { max-width: 800px; margin: 14px 0 0; color: var(--muted); }
+
+    .purpose-card {
+      display: grid;
+      grid-template-columns: 1.35fr .85fr;
+      gap: 44px;
+      padding: clamp(28px, 5vw, 58px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .purpose-statement {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.65rem, 3vw, 2.55rem);
+      letter-spacing: -.025em;
+      line-height: 1.25;
+    }
+    .purpose-statement strong { color: var(--green); font-weight: 600; }
+    .pillars { display: grid; gap: 12px; counter-reset: pillars; }
+    .pillar {
+      position: relative;
+      padding: 17px 18px 17px 58px;
+      border-radius: 15px;
+      background: #f0f3ed;
+      color: #334844;
+      font-size: .91rem;
+      font-weight: 700;
+      counter-increment: pillars;
+    }
+    .pillar::before {
+      content: counter(pillars, decimal-leading-zero);
+      position: absolute;
+      left: 17px;
+      color: var(--green);
+      font: 700 .74rem/1.7 ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .outcomes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .outcome {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 13px;
+      align-items: start;
+      min-height: 100px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(255, 253, 248, .72);
+    }
+    .check {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--green);
+      font-size: .78rem;
+      font-weight: 900;
+    }
+    .outcome p { margin: 0; font-size: .93rem; }
+    .north-star {
+      margin-top: 28px;
+      padding: 30px;
+      border-radius: 20px;
+      color: #fff;
+      background: var(--ink);
+    }
+    .north-star-label {
+      margin: 0 0 18px;
+      color: #9ecbc1;
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .chain { display: grid; grid-template-columns: repeat(9, auto); align-items: center; gap: 10px; }
+    .chain-step { font-family: Georgia, "Times New Roman", serif; font-size: clamp(1rem, 2vw, 1.35rem); }
+    .chain-arrow { color: var(--gold); font-size: 1.15rem; }
+
+    .hierarchy-shell {
+      padding: clamp(26px, 5vw, 54px);
+      border-radius: var(--radius);
+      background: var(--mint);
+    }
+    .tree { display: grid; gap: 13px; max-width: 940px; margin: auto; }
+    .tree-node {
+      position: relative;
+      padding: 18px 22px;
+      border: 1px solid rgba(21, 95, 85, .22);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .72);
+    }
+    .tree-node small {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--green);
+      font-size: .65rem;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .tree-node strong { font-size: 1rem; }
+    .tree-node.level-2 { margin-inline: 6%; }
+    .tree-node.level-3 { margin-inline: 12%; }
+    .tree-node.level-4 { margin-inline: 18%; }
+    .tree-node.level-5 { margin-inline: 24%; }
+    .mission-branches {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 2px 12% 5px;
+    }
+    .branch {
+      padding: 16px 12px;
+      border-radius: 12px;
+      color: #fff;
+      background: var(--green);
+      font-size: .78rem;
+      font-weight: 700;
+      line-height: 1.35;
+      text-align: center;
+    }
+    .adaptation-note {
+      max-width: 800px;
+      margin: 26px auto 0;
+      color: #395c56;
+      font-size: .9rem;
+      text-align: center;
+    }
+
+    .phases { display: grid; gap: 22px; }
+    .phase {
+      --phase-color: var(--green);
+      position: relative;
+      display: grid;
+      grid-template-columns: 165px minmax(0, 1fr) minmax(240px, .68fr);
+      gap: 34px;
+      padding: 32px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+    }
+    .phase::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 6px; background: var(--phase-color); }
+    .phase:nth-child(2) { --phase-color: var(--blue); }
+    .phase:nth-child(3) { --phase-color: var(--coral); }
+    .phase:nth-child(4) { --phase-color: var(--gold); }
+    .phase-index {
+      color: var(--phase-color);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3.2rem;
+      letter-spacing: -.05em;
+      line-height: 1;
+    }
+    .phase-period { display: block; margin-top: 12px; color: var(--muted); font-size: .73rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .phase h3 { margin: 0 0 10px; font-family: Georgia, "Times New Roman", serif; font-size: 1.55rem; font-weight: 600; line-height: 1.2; }
+    .phase-objective { margin: 0 0 16px; color: var(--muted); font-size: .92rem; }
+    .phase ul { margin: 0; padding-left: 1.15rem; color: #334844; font-size: .86rem; }
+    .phase li + li { margin-top: 5px; }
+    .gate {
+      align-self: stretch;
+      padding: 21px;
+      border-radius: 15px;
+      background: color-mix(in srgb, var(--phase-color) 11%, white);
+    }
+    .gate-label { display: block; margin-bottom: 9px; color: var(--phase-color); font-size: .66rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    .gate p { margin: 0; font-size: .83rem; line-height: 1.55; }
+
+    .roadmap-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .gantt-shell {
+      margin-bottom: 34px;
+      overflow-x: auto;
+      border: 1px solid #303954;
+      border-radius: 22px;
+      color: #eef1f9;
+      background: #111523;
+      box-shadow: 0 20px 56px rgba(17, 21, 35, .18);
+      scrollbar-color: #53607d #171c2d;
+    }
+    .gantt {
+      min-width: 1040px;
+      padding: 28px 28px 24px;
+    }
+    .gantt-head,
+    .gantt-row {
+      display: grid;
+      grid-template-columns: minmax(265px, 3.4fr) minmax(670px, 8.6fr);
+      align-items: center;
+    }
+    .gantt-head {
+      margin-bottom: 12px;
+      border-bottom: 1px solid #37415f;
+      color: #aab2cb;
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+    .gantt-head-label { padding: 0 18px 15px 4px; }
+    .gantt-months {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      padding-bottom: 15px;
+      text-align: center;
+    }
+    .gantt-row { min-height: 55px; }
+    .gantt-label {
+      padding: 9px 22px 9px 4px;
+      color: #e8ebf4;
+      font-size: .86rem;
+      font-weight: 680;
+      line-height: 1.25;
+    }
+    .gantt-track {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      align-items: center;
+      min-height: 55px;
+      background-image: linear-gradient(to right, transparent calc(100% - 1px), #303954 calc(100% - 1px));
+      background-size: calc(100% / 12) 100%;
+    }
+    .gantt-bar {
+      grid-column: var(--start) / var(--end);
+      z-index: 1;
+      min-width: 0;
+      margin-inline: 1px;
+      padding: 8px 14px;
+      overflow: hidden;
+      border-radius: 10px;
+      color: #111523;
+      font-size: .72rem;
+      font-weight: 850;
+      line-height: 1.2;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .gantt-bar.blue { background: linear-gradient(90deg, #65a4f6, #91bdf7); }
+    .gantt-bar.green { background: linear-gradient(90deg, #42c5a5, #70d7bd); }
+    .gantt-bar.coral { background: linear-gradient(90deg, #ff7890, #f6a1b1); }
+    .gantt-bar.purple { background: linear-gradient(90deg, #aa79ed, #caa5f7); }
+    .gantt-gates .gantt-label { color: #ffb126; }
+    .gate-marker {
+      position: relative;
+      grid-column: var(--at);
+      justify-self: center;
+      width: 18px;
+      height: 18px;
+      transform: rotate(45deg);
+      border-radius: 4px;
+      background: #ffad20;
+      box-shadow: 0 0 0 6px rgba(255, 173, 32, .16);
+    }
+    .gate-marker::after {
+      content: attr(data-label);
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      transform: rotate(-45deg);
+      color: #b8bfd2;
+      font-size: .58rem;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+    .gantt-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px 26px;
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid #303954;
+      color: #aab2cb;
+      font-size: .73rem;
+      font-weight: 680;
+    }
+    .legend-item { display: inline-flex; align-items: center; gap: 8px; }
+    .legend-swatch { width: 12px; height: 12px; border-radius: 4px; }
+    .legend-swatch.blue { background: #72aaf4; }
+    .legend-swatch.green { background: #4dc9aa; }
+    .legend-swatch.coral { background: #fb8297; }
+    .legend-swatch.purple { background: #b181ed; }
+    .legend-swatch.gate-swatch { transform: rotate(45deg); background: #ffad20; border-radius: 3px; }
+    .detail-label {
+      margin: 0 0 14px;
+      color: var(--green-dark);
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+    .roadmap-table th,
+    .roadmap-table td { padding: 16px 20px; border-bottom: 1px solid var(--line); text-align: left; }
+    .roadmap-table tr:last-child th,
+    .roadmap-table tr:last-child td { border-bottom: 0; }
+    .roadmap-table th { width: 155px; color: var(--green-dark); font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; }
+    .roadmap-table td { color: #3d504c; font-size: .9rem; }
+    .roadmap-table tr:nth-child(3n + 1) th { border-left: 5px solid var(--green); }
+    .roadmap-table tr:nth-child(3n + 2) th { border-left: 5px solid var(--green); }
+    .roadmap-table tr:nth-child(3n) th { border-left: 5px solid var(--green); }
+    .roadmap-table tr:nth-child(n + 4):nth-child(-n + 6) th { border-left-color: var(--blue); }
+    .roadmap-table tr:nth-child(n + 7):nth-child(-n + 9) th { border-left-color: var(--coral); }
+    .roadmap-table tr:nth-child(n + 10) th { border-left-color: var(--gold); }
+
+    .papers-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .paper-card {
+      position: relative;
+      min-height: 260px;
+      padding: 34px;
+      overflow: hidden;
+      border-radius: 20px;
+      color: #fff;
+      background: var(--green-dark);
+    }
+    .paper-card:last-child { background: #263f4d; }
+    .paper-letter {
+      position: absolute;
+      right: 18px;
+      bottom: -52px;
+      color: rgba(255, 255, 255, .07);
+      font: 700 12rem/1 Georgia, serif;
+    }
+    .paper-kicker { margin: 0 0 16px; color: #b8dad2; font-size: .7rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .paper-card h3 { position: relative; margin: 0 0 18px; font: 500 2rem/1.12 Georgia, serif; }
+    .paper-card p { position: relative; max-width: 420px; margin: 0; color: rgba(255, 255, 255, .75); font-size: .92rem; }
+    .paper-rule {
+      grid-column: 1 / -1;
+      padding: 25px 30px;
+      border: 1px solid #e5d1ad;
+      border-radius: 16px;
+      color: #624a28;
+      background: #fbf0db;
+      font-size: .92rem;
+    }
+    .paper-rule strong { color: #3e2e18; }
+
+    .adapt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .adapt-card { padding: 32px; border-radius: 20px; }
+    .adapt-card.stable { color: #fff; background: var(--green); }
+    .adapt-card.flexible { border: 1px solid var(--line); background: var(--surface); }
+    .adapt-card h3 { margin: 0 0 20px; font: 500 1.7rem/1.15 Georgia, serif; }
+    .adapt-card ul { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .adapt-card li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: .9rem; }
+    .adapt-card li::before { content: "—"; color: var(--gold); font-weight: 900; }
+    .adapt-card.flexible li::before { color: var(--green); }
+    .closing {
+      margin: 30px 0 0;
+      padding: 28px 30px;
+      border-left: 4px solid var(--gold);
+      color: #31433f;
+      background: #eee9df;
+      font: 500 clamp(1.2rem, 2.4vw, 1.65rem)/1.4 Georgia, serif;
+    }
+
+    .status-strip {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+      margin-top: 28px;
+      padding: 18px 22px;
+      border-radius: 16px;
+      color: #fff;
+      background: var(--ink);
+    }
+    .status-badge {
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: #173c37;
+      background: #8de0ca;
+      font-size: .7rem;
+      font-weight: 850;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .status-strip p { margin: 0; font-size: .9rem; }
+
+    .teams { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .team-card {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+    }
+    .team-card:first-child { border-top: 5px solid var(--green); }
+    .team-card:last-child { border-top: 5px solid var(--blue); }
+    .team-card h3 { margin: 0 0 8px; font: 600 1.55rem/1.2 Georgia, serif; }
+    .team-members { margin: 0 0 15px; color: var(--green); font-weight: 800; }
+    .team-card p:last-child { margin: 0; color: var(--muted); font-size: .9rem; }
+
+    .week-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+    }
+    .week-table th, .week-table td { padding: 15px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .week-table tr:last-child td { border-bottom: 0; }
+    .week-table thead th { color: #fff; background: var(--green-dark); font-size: .72rem; letter-spacing: .07em; text-transform: uppercase; }
+    .week-table td { color: #3d504c; font-size: .86rem; }
+    .week-table td:first-child { width: 86px; color: var(--green); font-weight: 850; white-space: nowrap; }
+    .week-table td:nth-child(2) { width: 138px; font-weight: 750; }
+    .week-table strong { display: block; margin-bottom: 3px; color: var(--ink); }
+
+    .compact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .compact-card { padding: 24px; border: 1px solid var(--line); border-radius: 17px; background: var(--surface); }
+    .compact-card h3 { margin: 0 0 12px; font: 600 1.2rem/1.2 Georgia, serif; }
+    .compact-card ul, .compact-card ol { margin: 0; padding-left: 1.1rem; color: #3d504c; font-size: .85rem; }
+    .compact-card li + li { margin-top: 6px; }
+
+    .repo-shell { padding: clamp(26px, 5vw, 46px); border-radius: 22px; color: #eaf4f1; background: #142522; }
+    .repo-shell h3 { margin: 0 0 14px; font: 500 1.7rem/1.2 Georgia, serif; }
+    .repo-shell > p { margin: 0 0 24px; color: #aec6c0; }
+    .repo-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 28px; }
+    .repo-tree { margin: 0; padding: 20px; overflow-x: auto; border-radius: 14px; color: #cde7e0; background: #0b1917; font: .8rem/1.65 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .workflow { margin: 0; padding-left: 1.25rem; font-size: .88rem; }
+    .workflow li + li { margin-top: 8px; }
+    .repo-note { margin-top: 22px !important; padding-top: 18px; border-top: 1px solid #35504a; font-size: .84rem; }
+
+    footer { padding: 32px 0 42px; border-top: 1px solid var(--line); color: var(--muted); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 30px; font-size: .78rem; }
+    .footer-inner p { margin: 0; }
+
+    @media (max-width: 900px) {
+      .topnav { display: none; }
+      .topbar { padding-bottom: 54px; }
+      .hero, .purpose-card { grid-template-columns: 1fr; }
+      .hero { gap: 38px; }
+      .phase { grid-template-columns: 110px minmax(0, 1fr); }
+      .gate { grid-column: 2; }
+      .mission-branches { grid-template-columns: repeat(2, 1fr); }
+      .chain { grid-template-columns: 1fr; gap: 7px; text-align: center; }
+      .chain-arrow { transform: rotate(90deg); }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { width: min(calc(100% - 26px), var(--max)); }
+      .masthead { padding-bottom: 58px; }
+      .brand span:last-child { font-size: .82rem; }
+      h1 { font-size: 2.8rem; }
+      main { padding-top: 62px; }
+      section + section { margin-top: 76px; }
+      .section-heading { grid-template-columns: 44px 1fr; gap: 12px; }
+      .section-no { font-size: 1.3rem; }
+      .outcomes, .papers-grid, .adapt-grid, .teams, .compact-grid, .repo-grid { grid-template-columns: 1fr; }
+      .phase { grid-template-columns: 1fr; gap: 22px; padding: 27px 24px; }
+      .gate { grid-column: auto; }
+      .mission-branches { margin-inline: 0; }
+      .tree-node.level-2, .tree-node.level-3, .tree-node.level-4, .tree-node.level-5 { margin-inline: 0; }
+      .roadmap-table, .roadmap-table tbody, .roadmap-table tr, .roadmap-table th, .roadmap-table td { display: block; width: 100%; }
+      .roadmap-table tr { padding: 15px 18px; border-bottom: 1px solid var(--line); }
+      .roadmap-table tr:last-child { border-bottom: 0; }
+      .roadmap-table th, .roadmap-table td { padding: 0; border: 0; }
+      .roadmap-table th { margin-bottom: 3px; padding-left: 10px; }
+      .roadmap-table td { padding-left: 10px; }
+      .footer-inner { flex-direction: column; gap: 8px; }
+      .gantt-shell { margin-inline: -2px; border-radius: 17px; }
+      .week-table, .week-table thead, .week-table tbody, .week-table tr, .week-table th, .week-table td { display: block; width: 100%; }
+      .week-table thead { display: none; }
+      .week-table tr { padding: 14px 17px; border-bottom: 1px solid var(--line); }
+      .week-table tr:last-child { border-bottom: 0; }
+      .week-table td { padding: 2px 0; border: 0; }
+      .week-table td:first-child, .week-table td:nth-child(2) { width: auto; }
+      .status-strip { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    @media print {
+      :root { --paper: #fff; --surface: #fff; --shadow: none; }
+      @page { size: A4; margin: 14mm; }
+      body { background: #fff; font-size: 10pt; }
+      .wrap { width: 100%; }
+      .masthead { padding: 14mm 0; background: var(--green-dark) !important; print-color-adjust: exact; }
+      .topbar { padding-bottom: 25mm; }
+      .topnav { display: none; }
+      .hero { grid-template-columns: 1.4fr .6fr; gap: 20px; }
+      h1 { font-size: 34pt; }
+      main { padding: 14mm 0; }
+      section + section { margin-top: 18mm; }
+      .purpose-card, .outcomes, .papers-grid, .adapt-grid { break-inside: avoid; }
+      .phase { break-inside: avoid; grid-template-columns: 100px 1fr 220px; padding: 18px; }
+      .roadmap-table { box-shadow: none; }
+      .gantt-shell { overflow: visible; break-inside: avoid; box-shadow: none; print-color-adjust: exact; }
+      .gantt { min-width: 0; padding: 15px; }
+      .gantt-head, .gantt-row { grid-template-columns: 175px 1fr; }
+      .gantt-label { font-size: 7.2pt; }
+      .gantt-bar { padding: 5px 7px; font-size: 6pt; }
+      .gate-marker::after { display: none; }
+      footer { padding-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand"><span class="brand-mark">PDC</span><span>Planejamento 2026–2027</span></div>
+        <nav class="topnav" aria-label="Navegação principal">
+          <a href="#fases">Fases</a><a href="#cronograma">Gantt</a><a href="#nivelamento">Fase 1</a><a href="#semanas">Semanas</a><a href="#repositorio">GitHub</a>
+        </nav>
+      </div>
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Roadmap do time</p>
+          <h1>SLMs, benchmark e comportamento agêntico</h1>
+          <p class="hero-lead">Do nivelamento à validação: uma trilha de doze meses para produzir evidência reproduzível e integrar SLMs em português como subagentes.</p>
+        </div>
+        <aside class="hero-meta" aria-label="Informações do projeto">
+          <div class="meta-row"><span class="meta-label">Período</span><span class="meta-value">Set. 2026 — Ago. 2027</span></div>
+          <div class="meta-row"><span class="meta-label">Liderança</span><span class="meta-value">Lucca</span></div>
+          <div class="meta-row"><span class="meta-label">Equipe</span><span class="meta-value">Ana, Gabriel, Henrique, Elisa, Jolie e Mateus</span></div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="proposito" aria-labelledby="titulo-proposito">
+      <div class="section-heading"><span class="section-no">01</span><div><h2 id="titulo-proposito">Propósito e ponto atual</h2></div></div>
+      <div class="purpose-card">
+        <p class="purpose-statement">Demonstrar, com resultados reproduzíveis, <strong>quando e como um SLM treinado ou adaptado em português pode atuar como subagente</strong> em uma plataforma agêntica.</p>
+        <div class="pillars"><div class="pillar">Treinamento e adaptação</div><div class="pillar">Benchmarks e análise experimental</div><div class="pillar">Tool-calling e comportamento agêntico</div></div>
+      </div>
+      <div class="status-strip"><span class="status-badge">Fase atual</span><p><strong>Fase 1 — Nivelamento.</strong> Lançamento em 10/09/2026 e dez apresentações semanais até 20/11/2026.</p></div>
+    </section>
+
+    <section id="fases" aria-labelledby="titulo-fases">
+      <div class="section-heading"><span class="section-no">02</span><div><h2 id="titulo-fases">Quatro fases do projeto</h2><p class="section-intro">Cada fase produz os insumos necessários para a seguinte e termina com um critério verificável.</p></div></div>
+      <div class="phases">
+        <article class="phase"><div><div class="phase-index">01</div><span class="phase-period">10 set. — 20 nov. 2026</span></div><div><h3>Nivelamento</h3><p class="phase-objective">Construir uma base técnica comum por meio de apresentações sequenciais, artefatos didáticos e prospecção contínua de papers.</p><ul><li>Fundamentos de LLMs, fine-tuning e avaliação.</li><li>Dez apresentações alternadas entre dois trios.</li><li>Seleção de papers de fine-tuning e benchmarking.</li></ul></div><aside class="gate"><span class="gate-label">Critério de conclusão</span><p>Materiais acessíveis, base conceitual compartilhada e dois papers principais, cada um com uma alternativa, recorte e custo estimado.</p></aside></article>
+        <article class="phase"><div><div class="phase-index">02</div><span class="phase-period">Meados nov. 2026 — fev. 2027</span></div><div><h3>Reprodução de papers</h3><p class="phase-objective">Reproduzir criticamente trabalhos relevantes e formar a principal base de evidências do projeto.</p><ul><li>Uma frente de fine-tuning e outra de benchmark.</li><li>Preparação, execução, correção, reexecução e análise.</li><li>Comparação com os resultados publicados.</li></ul></div><aside class="gate"><span class="gate-label">Critério de conclusão</span><p>Uma afirmação relevante de cada paper foi reproduzida ou sua divergência foi explicada com evidências.</p></aside></article>
+        <article class="phase"><div><div class="phase-index">03</div><span class="phase-period">Mar. — jun. 2027</span></div><div><h3>Plataforma experimental</h3><p class="phase-objective">Transformar os aprendizados em infraestrutura comum de avaliação, treinamento e integração agêntica.</p><ul><li>Harness, protocolo, baselines e resultados padronizados.</li><li>Pipeline reproduzível de fine-tuning.</li><li>Tool-calling, integração como subagente e análises.</li><li>Investigação complementar somente se necessária.</li></ul></div><aside class="gate"><span class="gate-label">Critério de conclusão</span><p>Os fluxos principais podem ser reexecutados por outra pessoa, a integração funciona e o recorte científico está sustentado.</p></aside></article>
+        <article class="phase"><div><div class="phase-index">04</div><span class="phase-period">Jul. — ago. 2027</span></div><div><h3>Consolidação e validação final</h3><p class="phase-objective">Congelar, reexecutar, validar e comunicar os resultados produzidos ao longo do projeto.</p><ul><li>Integração e validação no cenário TRL 4.</li><li>Pacote reproduzível de artefatos e configurações.</li><li>Tabelas, figuras, análises, documentação e artigo.</li></ul></div><aside class="gate"><span class="gate-label">Critério de conclusão</span><p>Resultados rastreáveis, reprodutíveis, demonstrados no ambiente integrado e organizados em uma contribuição defensável.</p></aside></article>
+      </div>
+    </section>
+
+    <section id="cronograma" aria-labelledby="titulo-cronograma">
+      <div class="section-heading"><span class="section-no">03</span><div><h2 id="titulo-cronograma">Mapa de Gantt</h2><p class="section-intro">A reprodução começa após o gate de nivelamento; julho e agosto ficam reservados à consolidação.</p></div></div>
+      <div class="gantt-shell" role="img" aria-label="Gantt das quatro fases entre setembro de 2026 e agosto de 2027">
+        <div class="gantt">
+          <div class="gantt-head"><div class="gantt-head-label">Fase</div><div class="gantt-months"><span>Set</span><span>Out</span><span>Nov</span><span>Dez</span><span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span><span>Jul</span><span>Ago</span></div></div>
+          <div class="gantt-row"><div class="gantt-label">1 · Nivelamento</div><div class="gantt-track"><span class="gantt-bar blue" style="--start:1;--end:4">10 set. — 20 nov.</span></div></div>
+          <div class="gantt-row"><div class="gantt-label">2 · Reprodução de papers</div><div class="gantt-track"><span class="gantt-bar green" style="--start:3;--end:7">Meados nov. — fev.</span></div></div>
+          <div class="gantt-row"><div class="gantt-label">3 · Plataforma experimental</div><div class="gantt-track"><span class="gantt-bar coral" style="--start:7;--end:11">Mar. — jun.</span></div></div>
+          <div class="gantt-row"><div class="gantt-label">4 · Consolidação</div><div class="gantt-track"><span class="gantt-bar purple" style="--start:11;--end:13">Jul. — ago.</span></div></div>
+          <div class="gantt-legend"><span class="legend-item"><span class="legend-swatch blue" aria-hidden="true">&nbsp;</span>Nivelar</span><span class="legend-item"><span class="legend-swatch green" aria-hidden="true">&nbsp;</span>Reproduzir</span><span class="legend-item"><span class="legend-swatch coral" aria-hidden="true">&nbsp;</span>Construir e explorar</span><span class="legend-item"><span class="legend-swatch purple" aria-hidden="true">&nbsp;</span>Consolidar</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nivelamento" aria-labelledby="titulo-nivelamento">
+      <div class="section-heading"><span class="section-no">04</span><div><h2 id="titulo-nivelamento">Fase 1: organização do nivelamento</h2><p class="section-intro">Todos estudam os dez temas. A equipe responsável pesquisa, transforma o conteúdo em material didático e ensina aos demais.</p></div></div>
+      <div class="teams">
+        <article class="team-card"><h3>Treinamento e fine-tuning</h3><p class="team-members">Gabriel · Jolie · Mateus</p><p>Explicar como modelos aprendem e são adaptados, avaliando com rigor os efeitos do treinamento.</p></article>
+        <article class="team-card"><h3>Benchmarks e comportamento agêntico</h3><p class="team-members">Ana · Elisa · Henrique</p><p>Transformar capacidades em tarefas, métricas e evidências, avançando até tool-calling e comportamento agêntico.</p></article>
+      </div>
+    </section>
+
+    <section id="semanas" aria-labelledby="titulo-semanas">
+      <div class="section-heading"><span class="section-no">05</span><div><h2 id="titulo-semanas">Dez semanas, uma progressão</h2><p class="section-intro">Os encontros vão dos fundamentos de LLMs à seleção dos dois papers que entram na Fase 2.</p></div></div>
+      <table class="week-table">
+        <thead><tr><th>Semana</th><th>Equipe</th><th>Tema e pergunta orientadora</th></tr></thead>
+        <tbody>
+          <tr><td>1 · 14–18/09</td><td>Fine-tuning</td><td><strong>Do texto à previsão do próximo token</strong>Como uma frase vira números processados pelo LLM e volta a ser texto?</td></tr>
+          <tr><td>2 · 21–25/09</td><td>Benchmarks</td><td><strong>Geração e instruções</strong>Por que o mesmo modelo gera respostas diferentes e o que significa seguir uma instrução?</td></tr>
+          <tr><td>3 · 28/09–02/10</td><td>Fine-tuning</td><td><strong>Pretraining</strong>Quais dados, objetivos e decisões transformam parâmetros aleatórios em um modelo de linguagem?</td></tr>
+          <tr><td>4 · 05–09/10</td><td>Benchmarks</td><td><strong>Fundamentos de avaliação</strong>O que torna cientificamente válida a afirmação de que um modelo é melhor que outro?</td></tr>
+          <tr><td>5 · 12–16/10</td><td>Fine-tuning</td><td><strong>SFT e instruction tuning</strong>O que muda quando um modelo pré-treinado é ajustado para responder instruções?</td></tr>
+          <tr><td>6 · 19–23/10</td><td>Benchmarks</td><td><strong>Desenho experimental e reprodutibilidade</strong>Como separar o efeito do método de comparações injustas e variação aleatória?</td></tr>
+          <tr><td>7 · 26–30/10</td><td>Fine-tuning</td><td><strong>PEFT, LoRA e QLoRA</strong>Como adaptar um modelo atualizando poucos parâmetros e preservar uma comparação válida?</td></tr>
+          <tr><td>8 · 02–06/11</td><td>Benchmarks</td><td><strong>Tool-calling e benchmarks agênticos</strong>Como avaliar escolha de ferramenta, argumentos corretos e ações em múltiplos passos?</td></tr>
+          <tr><td>9 · 09–13/11</td><td>Fine-tuning</td><td><strong>Seleção do paper de fine-tuning</strong>Qual trabalho oferece a melhor combinação de aprendizado, relevância e viabilidade?</td></tr>
+          <tr><td>10 · 16–20/11</td><td>Benchmarks</td><td><strong>Seleção do paper de benchmark</strong>Qual trabalho permite reproduzir uma afirmação relevante e gerar um artefato reutilizável?</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="formato" aria-labelledby="titulo-formato">
+      <div class="section-heading"><span class="section-no">06</span><div><h2 id="titulo-formato">Formato de trabalho semanal</h2><p class="section-intro">O material deve ser didático, verificável e simples o bastante para ser produzido com qualidade.</p></div></div>
+      <div class="compact-grid">
+        <article class="compact-card"><h3>O que entregar</h3><ul><li>Slideshow da apresentação.</li><li>Fontes, com ao menos uma fonte primária quando aplicável.</li><li>Um artefato didático adequado ao tema.</li><li>Atualização breve do radar de papers.</li></ul></article>
+        <article class="compact-card"><h3>Estrutura da apresentação</h3><ol><li>Pergunta e motivação.</li><li>Intuição e mapa conceitual.</li><li>Explicação técnica.</li><li>Visualização e artefato.</li><li>Literatura e projeto.</li><li>Síntese e limites.</li></ol></article>
+        <article class="compact-card"><h3>Encontro de até 60 min</h3><ul><li>Até 50 minutos para a apresentação.</li><li>10 minutos finais para perguntas da outra equipe.</li><li>O trio cobre pesquisa, artefato, didática e integração.</li><li>IA é recomendada para pesquisa e produção; a equipe valida e domina todo o material.</li></ul></article>
+      </div>
+    </section>
+
+    <section id="papers" aria-labelledby="titulo-papers">
+      <div class="section-heading"><span class="section-no">07</span><div><h2 id="titulo-papers">Busca de papers e gate da Fase 1</h2><p class="section-intro">A prospecção acontece em paralelo às apresentações e converge para duas reproduções viáveis.</p></div></div>
+      <table class="roadmap-table"><tbody>
+        <tr><th>Semana 2</th><td>Termos de busca e primeiros papers.</td></tr><tr><th>Semana 4</th><td>Lista inicial por frente.</td></tr><tr><th>Semana 6</th><td>Triagem de relevância e viabilidade.</td></tr><tr><th>Semana 8</th><td>Shortlist de até três papers por frente.</td></tr><tr><th>Semanas 9–10</th><td>Defesa do paper principal e da alternativa.</td></tr>
+      </tbody></table>
+      <div class="paper-rule" style="margin-top:22px"><strong>A Fase 1 termina quando:</strong> as dez apresentações e seus materiais estão acessíveis; o time conecta tokenização, geração, treinamento, adaptação e avaliação; os finalistas tiveram código, dados e requisitos inspecionados; e cada frente definiu paper principal, alternativa, recorte reproduzível e estimativa de custo.</div>
+    </section>
+
+    <section id="repositorio" aria-labelledby="titulo-repositorio">
+      <div class="section-heading"><span class="section-no">08</span><div><h2 id="titulo-repositorio">Organização no GitHub</h2><p class="section-intro">O repositório concentra os artefatos do time durante todo o projeto. Na Fase 1, cada semana possui uma pasta própria.</p></div></div>
+      <div class="repo-shell">
+        <h3>ceia-slms-benchmark-e-agentes</h3>
+        <p>Cada trio adiciona apenas o material de sua apresentação; a liderança faz a curadoria do que será reutilizado nas fases seguintes.</p>
+        <div class="repo-grid">
+          <pre class="repo-tree">README.md
+nivelamento/
+├── fase-1-nivelamento-apresentacoes.md
+├── semana-01-tokenizacao/
+├── semana-02-geracao-e-instrucoes/
+├── ...
+└── semana-10-selecao-paper-benchmark/
+papers/
+└── radar.md</pre>
+          <div><p class="detail-label" style="color:#8de0ca">Fluxo de contribuição</p><ol class="workflow"><li>Atualizar a <code>main</code> e criar uma branch <code>nome/semana-NN-assunto</code>.</li><li>Trabalhar na pasta da semana e registrar commits claros.</li><li>Enviar a branch e abrir um Pull Request para a <code>main</code>.</li><li>Responder à revisão na mesma branch.</li><li>Aguardar a aprovação e o merge realizados por Lucca.</li></ol></div>
+        </div>
+        <p class="repo-note"><strong>Regra da equipe:</strong> não fazer commits diretamente na <code>main</code>. Não versionar tokens, senhas, datasets, modelos ou checkpoints grandes.</p>
+      </div>
+    </section>
+
+    <section id="destino" aria-labelledby="titulo-destino">
+      <div class="section-heading"><span class="section-no">09</span><div><h2 id="titulo-destino">Resultado esperado em agosto de 2027</h2></div></div>
+      <div class="outcomes"><div class="outcome"><span class="check">✓</span><p>Equipe capaz de executar e explicar experimentos com autonomia.</p></div><div class="outcome"><span class="check">✓</span><p>Reproduções documentadas e evidências científicas consolidadas.</p></div><div class="outcome"><span class="check">✓</span><p>Harness comum para avaliação de SLMs e tool-calling.</p></div><div class="outcome"><span class="check">✓</span><p>Pipeline reproduzível de treinamento ou fine-tuning.</p></div><div class="outcome"><span class="check">✓</span><p>SLM em PT-BR avaliado e integrado como subagente.</p></div><div class="outcome"><span class="check">✓</span><p>Artefatos, documentação e resultados para o artigo e a validação TRL 4.</p></div></div>
+      <blockquote class="closing">O artigo pode nascer da reprodução e extensão de um paper, da plataforma experimental ou da combinação das duas frentes. A contribuição será escolhida pela força das evidências.</blockquote>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-inner"><p>Roadmap do time • SLMs, benchmark e comportamento agêntico</p><p>Setembro de 2026 — Agosto de 2027</p></div></footer>
+</body>
+</html>
